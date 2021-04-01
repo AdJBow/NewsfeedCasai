@@ -1,5 +1,7 @@
 package com.tests.newsfeed
 
+import Adapter.ViewHolder.ListSourceAdapter
+import Interface.NewsService
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +10,15 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 
 
 class News : AppCompatActivity() {
+    lateinit var layoutManager:LinearLayoutManager
+    lateinit var nService:NewsService
+    lateinit var adapter: ListSourceAdapter
+    lateinit var dialog:AlertDialog
     val FINE_LOCATION_RC = 101
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news)
