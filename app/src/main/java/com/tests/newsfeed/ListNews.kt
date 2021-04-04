@@ -16,6 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import Model.News1
+import android.content.Intent
 
 class ListNews : AppCompatActivity() {
 
@@ -39,7 +40,9 @@ class ListNews : AppCompatActivity() {
         swipe_to_refresh.setOnRefreshListener { loadNews(source,true) }
 
         diagonalLayout.setOnClickListener{
-            //implement soon
+            val detail= Intent(baseContext, NewsDetails::class.java)
+            detail.putExtra("webURL",webHotUrl)
+            startActivity(detail)
 
         }
 

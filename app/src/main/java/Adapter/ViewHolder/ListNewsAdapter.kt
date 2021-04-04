@@ -3,12 +3,14 @@ package Adapter.ViewHolder
 import Interface.ItemClickListener
 import Model.Article
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.internal.bind.util.ISO8601Utils
 import com.squareup.picasso.Picasso
+import com.tests.newsfeed.NewsDetails
 import com.tests.newsfeed.R
 import common.ISO8601Parser
 import java.text.ParseException
@@ -49,7 +51,9 @@ class ListNewsAdapter(val articleList:MutableList<Article>, private val context:
         //Event Click
         holder.setItemClickListener(object : ItemClickListener{
             override fun Onclick(View: View, position: Int) {
-                //Implement later
+                val detail= Intent(context, NewsDetails::class.java)
+                detail.putExtra("webURL",articleList[position].url)
+                context.startActivity(detail)
             }
 
         })
