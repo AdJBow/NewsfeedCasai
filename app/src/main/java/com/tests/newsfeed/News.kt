@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import io.paperdb.Paper
-import common.common
+import common.Common
 import dmax.dialog.SpotsDialog
 import kotlinx.android.synthetic.main.activity_news.*
 import retrofit2.Call
@@ -35,7 +35,7 @@ class News : AppCompatActivity() {
         //Init cacheDB
         Paper.init(this)
         //Init service
-        nService = common.newsService
+        nService = Common.newsService
         //Init view
         swipe_to_refresh.setOnRefreshListener {
             loadWebSiteSource(true)

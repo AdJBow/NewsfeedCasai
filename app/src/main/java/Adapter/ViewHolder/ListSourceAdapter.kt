@@ -3,11 +3,13 @@ package Adapter.ViewHolder
 import Interface.ItemClickListener
 import Model.WebSite
 import android.content.Context
+import android.content.Intent
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.tests.newsfeed.ListNews
 import com.tests.newsfeed.R
 import kotlinx.android.synthetic.main.news_source.view.*
 import java.util.*
@@ -29,7 +31,9 @@ class ListSourceAdapter (private val context: Context, private val webSite:WebSi
         holder.setItemClickListener( object: ItemClickListener{
 
             override fun Onclick(View: View, position: Int) {
-                Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, ListNews::class.java)
+                intent.putExtra("source", webSite.sources!![position].id)
+                context.startActivity(intent)
             }
         })
     }
