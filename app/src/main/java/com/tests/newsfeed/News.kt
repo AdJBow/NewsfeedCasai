@@ -65,18 +65,18 @@ class News : AppCompatActivity() {
                 dialog.show()
                 //new data
                 nService.sources.enqueue(object: retrofit2.Callback<WebSite>{
-                    override fun onResponse(call: Call<WebSite>, response: Response<WebSite>) {
-                       adapter = ListSourceAdapter(baseContext, response!!.body()!!)
+
+                    override fun onFailure(call: Call<WebSite>?, t: Throwable?) {
+                        Toast.makeText(baseContext, "Failed",Toast.LENGTH_SHORT).show()
+                    }
+                    override fun onResponse(call: Call<WebSite>?, response: Response<WebSite>?) {
+                        adapter = ListSourceAdapter(baseContext, response!!.body()!!)
                         adapter.notifyDataSetChanged()
                         recyclerView1.adapter = adapter
                         //save cache
                         Paper.book().write("cache",Gson().toJson(response!!.body()!!))
 
                         dialog.dismiss()
-                    }
-
-                    override fun onFailure(call: Call<WebSite>, t: Throwable) {
-                        Toast.makeText(baseContext, "Failed",Toast.LENGTH_SHORT).show()
                     }
 
                 })

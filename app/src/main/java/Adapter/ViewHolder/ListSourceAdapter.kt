@@ -27,12 +27,13 @@ class ListSourceAdapter (private val context: Context, private val webSite:WebSi
     }
 
     override fun onBindViewHolder(holder: ListSourceViewerHolder, position: Int) {
-        holder.source_title.text = webSite.sources!![position].name
+        holder!!.source_title.text = webSite.sources!![position].name
         holder.setItemClickListener( object: ItemClickListener{
 
             override fun Onclick(View: View, position: Int) {
                 val intent = Intent(context, ListNews::class.java)
                 intent.putExtra("source", webSite.sources!![position].id)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(intent)
             }
         })

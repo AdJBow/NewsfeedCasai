@@ -8,7 +8,7 @@ import com.tests.newsfeed.News
 import retrofit2.http.Url
 
 interface NewsService {
-    @get:GET("v2/sources?apiKey=API_KEY")
+    @get:GET("v2/sources?apiKey=756560bf64d049129b005ebda73d3391")
     val sources:Call<WebSite>
 
     @GET
